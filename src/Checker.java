@@ -1,20 +1,20 @@
 public class Checker {
 
+
     public static void main(String[] args) {
+        Clock clock = new Clock("11:21", "12:30");
+        Lamp lamp = new Lamp("blue", 12, true);
 
-        Account user1 = new Account();
-        Account user2 = new Account();
+        Room room = new Room(clock, lamp);
 
-        user1.depositTransaction(100);
-        user2.withdrawalTransaction(100);
+        room.getClock().setCurrentTime("23:00");
+        room.getClock().setAlarmTime("23:01");
 
-        System.out.println("User 1 getAccountBalance: " + user1.getAccountBalance());
-        System.out.println("User 2 getAccountBalance: " + user2.getAccountBalance());
+        room.getLamp().pushSwitchButton();
+        room.getLamp().pushSwitchButton();
+        room.getLamp().pushSwitchButton();
+        room.getLamp().pushSwitchButton();
+        room.getLamp().pushSwitchButton();
 
-        user2.depositTransaction(550);
-        user1.withdrawalTransaction(400);
-
-        System.out.println("User 1 getAccountBalance: " + user1.getAccountBalance());
-        System.out.println("User 2 getAccountBalance: " + user2.getAccountBalance());
     }
 }
