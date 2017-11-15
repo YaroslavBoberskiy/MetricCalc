@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Checker {
 
-
-
     public static void main(String[] args) {
         System.out.println("Input Array:");
         int[] array  = ArrayInput(5);
@@ -32,11 +30,13 @@ public class Checker {
 
         int temp = 0;
 
-        for (int i = 0; i < arrayToSort.length - 1; i++) {
-            if (arrayToSort[i] > arrayToSort[i+1]) {
-                temp = arrayToSort[i+1];
-                arrayToSort[i+1] = arrayToSort[i];
-                arrayToSort[i] = temp;
+        for (int k = 0; k < arrayToSort.length; k++) {
+            for (int i = 0; i < arrayToSort.length - 1; i++) {
+                if (arrayToSort[i] < arrayToSort[i+1]) {
+                    temp = arrayToSort[i+1];
+                    arrayToSort[i+1] = arrayToSort[i];
+                    arrayToSort[i] = temp;
+                }
             }
         }
 
