@@ -3,43 +3,16 @@ import java.util.Scanner;
 public class Checker {
 
     public static void main(String[] args) {
-        System.out.println("Input Array:");
-        int[] array  = ArrayInput(5);
-        PrintArray(array);
-        System.out.println("Sorted Array:");
-        int[] sortedArray = SortArray(array);
-        PrintArray(sortedArray);
+        int[] inputArray = new int[5];
+        System.out.println("Input Array Size is: " + inputArray.length);
+        int newArrayLength = 8;
+        inputArray = ResizeArray (inputArray, newArrayLength);
+        System.out.println("New Array Size is: " + inputArray.length);
     }
 
-    public static int[] ArrayInput (int size) {
-        int[] arrayInput = new int[size];
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < size; i++) {
-            arrayInput[i] = scanner.nextInt();
-        }
-        return arrayInput;
+    private static int[] ResizeArray (int[] inputArray, int newArrayLength) {
+        inputArray = new int[newArrayLength];
+        return inputArray;
     }
 
-    public static void PrintArray (int[] arrayToPrint) {
-        for (int i : arrayToPrint) {
-            System.out.println(i);
-        }
-    }
-
-    public static int[] SortArray (int[] arrayToSort) {
-
-        int temp = 0;
-
-        for (int k = 0; k < arrayToSort.length; k++) {
-            for (int i = 0; i < arrayToSort.length - 1; i++) {
-                if (arrayToSort[i] < arrayToSort[i+1]) {
-                    temp = arrayToSort[i+1];
-                    arrayToSort[i+1] = arrayToSort[i];
-                    arrayToSort[i] = temp;
-                }
-            }
-        }
-
-        return arrayToSort;
-    }
 }
