@@ -1,57 +1,65 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Checker {
 
-    private static MobilePhone phone = new MobilePhone();
+    private static Branch osokorki = new Branch("Osokorki");
+    private static Branch pozniaki = new Branch("Pozniaki");
+    private static Branch kharkivska = new Branch("Kharkivska");
+
+    private static Customer osokorkovskiy = new Customer("Osokorkovskiy", 15.5);
+    private static Customer pozniakovskiy = new Customer("Pozniakovskiy", 25.5);
+    private static Customer kharkivskiy = new Customer("Kharkivskiy", 35.5);
+
+    private static Bank bank = new Bank();
 
     public static void main(String[] args) {
-        while (true) {
-            ManageContacts();
+        bank.AddBranch(osokorki);
+        bank.AddBranch(pozniaki);
+        bank.AddBranch(kharkivska);
+
+        bank.ShowAllBranches();
+
+        showAllCustomers(osokorki);
+        showAllCustomers(pozniaki);
+        showAllCustomers(kharkivska);
+
+        osokorki.AddNewCustomer(osokorkovskiy);
+
+        showAllCustomers(osokorki);
+
+        osokorki.MakeTransaction(osokorkovskiy, 14.2);
+        osokorki.MakeTransaction(osokorkovskiy, 14.7);
+
+        showCustomerTransactions(osokorki, osokorkovskiy);
+
+    }
+
+    public static void showAllCustomers(Branch branch) {
+        ArrayList<Customer> customers = branch.getCustomers();
+        if (customers.size() == 0) {
+            System.out.println("There is no customers in branch " + branch.getBranchName());
+        } else {
+            System.out.println("=== Customers of the branch " + branch.getBranchName() + "===");
+            for (int i = 0; i < branch.getCustomers().size(); i++) {
+                System.out.println(branch.getCustomers().get(i).getName());
+            }
         }
     }
 
-    public static void Menu () {
-        System.out.println("==== PHONE ADDRESS BOOK ====");
-        System.out.println("Enter 1 to add new contact");
-        System.out.println("Enter 2 to list all contacts");
-        System.out.println("Enter 3 to modify existing contact");
-        System.out.println("Enter 4 to remove existing contact");
-    }
+    public static void showCustomerTransactions(Branch branch, Customer customer) {
+        ArrayList<Customer> customers = branch.getCustomers();
+        System.out.println("=== Transactions of the customer " + customer.getName() + "===");
 
-    public static void ManageContacts () {
-        Menu();
-        Scanner menuInput = new Scanner(System.in);
-        Scanner nameInput = new Scanner(System.in);
-        Scanner telNumInput = new Scanner(System.in);
-
-        String name;
-        String telNum;
-
-        switch (menuInput.nextInt()) {
-            case 1:
-                System.out.println("Enter new contact name");
-                name = nameInput.nextLine();
-                System.out.println("Enter new contact tel. num");
-                telNum = telNumInput.nextLine();
-                phone.AddContact(new Contact(name, telNum));
-                break;
-
-            case 2:
-                phone.ShowContacts();
-                break;
-
-            case 3:
-                System.out.println("Enter name to modify");
-                name = nameInput.nextLine();
-                System.out.println("Enter tel to modify");
-                telNum = telNumInput.nextLine();
-                phone.UpdateContact(name, telNum);
-                break;
-
-            case 4:
-                System.out.println("Enter contacts name to remove");
-                name = nameInput.nextLine();
-                phone.RemoveContact(name);
+        if (branch.getCustomers().contains(customer)) {
+            customer = branch.getCustomers().get(branch.getCustomers().indexOf(customer));
+            ArrayList<Double> transactions = customer.getTransactions();
+            for (int i = 0; i < transactions.size(); i ++) {
+                System.out.println(transactions.get(i));
+            }
+        } else {
+            System.out.println("No such customer in the branch: " + branch.getBranchName());
         }
     }
+
 }
