@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Checker {
 
@@ -48,7 +47,6 @@ public class Checker {
     }
 
     public static void showCustomerTransactions(Branch branch, Customer customer) {
-        ArrayList<Customer> customers = branch.getCustomers();
         System.out.println("=== Transactions of the customer " + customer.getName() + "===");
 
         if (branch.getCustomers().contains(customer)) {
