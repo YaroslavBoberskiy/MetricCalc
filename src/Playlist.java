@@ -10,4 +10,11 @@ public class Playlist {
         playlist = new LinkedList<Track>();
     }
 
+    public void addTrack (Track track) {
+        playlist.add(track);
+    }
+
+    public LinkedList<Track> getPlaylist() {
+        return playlist;
+    }
 }

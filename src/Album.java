@@ -10,6 +10,10 @@ public class Album {
         this.tracks = new ArrayList<Track>();
     }
 
+    public void addTracksToAlbum (Track track) {
+        tracks.add(track);
+    }
+
     public String getTitle() {
         return title;
     }
