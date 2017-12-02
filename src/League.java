@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class League<T extends Team> {
@@ -17,12 +16,8 @@ public class League<T extends Team> {
     }
 
     public void showTeamsInRank () {
-        Collections.sort(teams, new Comparator<Team>() {
-            @Override
-            public int compare(Team o1, Team o2) {
-                return o1.getRating() - o2.getRating();
-            }
-        });
+
+        Collections.sort(teams);
 
         for (Team t:teams
              ) {

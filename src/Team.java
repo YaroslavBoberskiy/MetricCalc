@@ -1,4 +1,4 @@
-public abstract class Team<T extends Team> {
+public abstract class Team<T extends Team> implements Comparable<Team> {
 
     private String name;
     private int rating;
@@ -14,5 +14,16 @@ public abstract class Team<T extends Team> {
 
     public int getRating() {
         return rating;
+    }
+
+    @Override
+    public int compareTo(Team t) {
+        if (this.rating > t.rating) {
+            return 1;
+        } else if (this.rating < t.rating) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
