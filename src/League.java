@@ -19,7 +19,7 @@ public class League<T extends Team> {
 
         Collections.sort(teams);
 
-        for (Team t:teams
+        for (T t:teams
              ) {
             System.out.println(t.getName() + " rating - " + t.getRating());
         }

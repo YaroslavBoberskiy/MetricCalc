@@ -14,6 +14,7 @@ public class Launcher {
 
         soccer.addTeam(alpha);
         soccer.addTeam(betta);
+        soccer.addTeam(betta);
 
         baseball.addTeam(zetta);
         baseball.addTeam(omega);
